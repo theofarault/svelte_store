@@ -22,3 +22,8 @@ npm run dev
 ## Material UI  
 
 https://sveltematerialui.com/  
+
+
+## API utilisé   
+
+https://fakeapi.platzi.com/  
