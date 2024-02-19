@@ -13,14 +13,7 @@
       </a>
         <Actions>
 
-          <ActionButtons>
-            <Button on:click={() => clicked++}>
-              <Label>Action</Label>
-            </Button>
-            <Button on:click={() => clicked++}>
-              <Label>Another</Label>
-            </Button>
-          </ActionButtons>
+          <BtnAcheter id_produit={produit.id}></BtnAcheter>
 
           <ActionIcons>
             <IconButton
@@ -61,6 +54,7 @@
     } from '@smui/card';
     import Button, { Label } from '@smui/button';
     import IconButton, { Icon } from '@smui/icon-button';
+    import BtnAcheter from './btn_acheter.svelte';
   
     let clicked = 0;
     

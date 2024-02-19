@@ -1,5 +1,7 @@
 <script>
     export let produit;
+
+    import BtnAcheter from './btn_acheter.svelte';
 </script>
 
 <div class="container">
@@ -27,7 +29,7 @@
 
     <div class="container">
         <div class="d-flex justify-content-center">
-            <button class="btn btn-danger">Acheter</button>
+            <BtnAcheter id_produit={produit.id}></BtnAcheter>
         </div>
     </div>
 
