@@ -13,7 +13,7 @@ puis
 npm install   
 
 # preparer le projet
-pm run prepare
+npm run prepare
 
 # Lancer le projet
 npm run dev  

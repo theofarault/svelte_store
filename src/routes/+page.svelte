@@ -31,13 +31,16 @@
 
   import CardShop from './card_shop.svelte';
   import 'bootstrap/dist/css/bootstrap.min.css';
+  import Header from './Header.svelte';
 
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
-
-<Button variant="raised">Bonjour</Button>
+<Header/>
+<div class="container">
+  <div class="row">
+    <h1 class="text-center">Bienvenue sur votre boutique favorite</h1>
+  </div>
+</div>
 
   <!-- Afficher les données -->
   {#if data.length > 0}
