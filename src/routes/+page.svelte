@@ -30,7 +30,6 @@
 
 
   import CardShop from './card_shop.svelte';
-  import 'bootstrap/dist/css/bootstrap.min.css';
   import Header from './Header.svelte';
 
 </script>

@@ -1,6 +1,7 @@
     <div class="card-container w-25 m-2">
       <Card>
-        <PrimaryAction on:click={() => clicked++}>
+        <a href="/produit/{produit.id}" style="text-decoration: none;">
+        <PrimaryAction>
           <Media aspectRatio="16x9" style="background-image: url({imageURL});"/>
           <Content class="mdc-typography--body2">
             <h2 class="mdc-typography--headline6" style="margin: 0;">
@@ -9,7 +10,9 @@
             {produit.price} €
           </Content>
         </PrimaryAction>
+      </a>
         <Actions>
+
           <ActionButtons>
             <Button on:click={() => clicked++}>
               <Label>Action</Label>
@@ -18,6 +21,7 @@
               <Label>Another</Label>
             </Button>
           </ActionButtons>
+
           <ActionIcons>
             <IconButton
               on:click={() => clicked++}
@@ -39,6 +43,7 @@
               title="More options">more_vert</IconButton
             >
           </ActionIcons>
+
         </Actions>
       </Card>
     </div>
