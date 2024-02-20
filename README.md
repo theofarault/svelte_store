@@ -35,3 +35,6 @@ https://fakeapi.platzi.com/
 -  Ajouter un produit dans le panier
 -  Consulter le panier 
 -  Faire une recherche de produit
+-  Consultation mannequins 
+-  Consultation categorie avec list-image
+-  Ajout d'un loading à chaque attente de la reponse de l'api 

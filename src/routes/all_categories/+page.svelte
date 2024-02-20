@@ -43,7 +43,6 @@
 
 <style lang="scss">
     @import './_FourByFive.scss';
-
 </style>
 
 <Header/>
