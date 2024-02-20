@@ -2,15 +2,34 @@
   //import { Link } from 'svelte-routing';
   import { page } from '$app/stores';
   import 'bootstrap/dist/css/bootstrap.min.css';
+  import Badge from '@smui-extra/badge';
 
 
   import { compteur } from './compteur.js';
 
   let count_value;
 
-  compteur.subscribe((value) => {
-    count_value = value;
+  compteur.subscribe(dictionary => {
+    //console.log(dictionary);
+    var count = Object.keys(dictionary).length;
+    count_value = count;
   });
+
+  let align = 'bottom-start';
+  let position = 'middle';
+
+
+  //gestion du bouton recherche
+  import { createEventDispatcher } from 'svelte';
+
+  const dispatch = createEventDispatcher();
+
+  let searchTerm = '';
+
+  function search() {
+    console.log("search : " + searchTerm)
+    dispatch('search', searchTerm);
+  }
 
 </script>
 
@@ -40,15 +59,16 @@
         <div class="col-6">
           <div class="d-flex justify-content-left">
             <form class="d-flex form-center my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" bind:value={searchTerm} >
+              <button class="btn btn-outline-success my-2 my-sm-0" on:click={search}>Search</button>
             </form>
           </div>
         </div>
 
 
         <div>
-            <button class="relative mr-4 ml-4 btn btn-secondary p-1">
+          <a  href="/panier">
+            <button class="relative mr-4 ml-4 btn btn-secondary p-1" style="position: relative;">
                 <svg width="20" height="22" viewBox="0 0 20 22" fill="none" stroke="#fff"><path
                   d="M4 1L1 5V19C1 19.5304 1.21071 20.0391 1.58579 20.4142C1.96086 20.7893 2.46957 21 3 21H17C17.5304 21 18.0391 20.7893 18.4142 20.4142C18.7893 20.0391 19 19.5304 19 19V5L16 1H4Z"
                   stroke-width="1.5"
@@ -61,10 +81,10 @@
                   stroke-linejoin="round"
                 /></svg>
 
-                <div class="absolute bottom-0 left-0 -ml-3 -mb-3 flex h-5 w-5 items-center justify-center rounded-full border border-black bg-white text-xs text-black">
-                  {count_value}
-                </div>
+                <Badge {position} {align} aria-label="unread count">{count_value}</Badge>
+                  
               </button>
+            </a>
         </div>
 
       </nav>

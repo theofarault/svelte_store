@@ -27,3 +27,11 @@ https://sveltematerialui.com/
 ## API utilisé   
 
 https://fakeapi.platzi.com/  
+
+
+## Fonctionnalités implémentés  
+-  Consultation des produits
+-  Detail d'un produit
+-  Ajouter un produit dans le panier
+-  Consulter le panier 
+-  Faire une recherche de produit

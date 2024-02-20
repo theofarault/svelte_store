@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
 
-export const compteur = writable(0);
+export const compteur = writable({});
 
 

@@ -32,9 +32,22 @@
   import CardShop from './card_shop.svelte';
   import Header from './Header.svelte';
 
+  let searchResults = [];
+
+  function handleSearch(event) {
+    // Exécuter la logique de recherche et mettre à jour searchResults
+    // par exemple, vous pouvez utiliser fetch() pour récupérer les résultats
+    // à partir d'une API
+    fetch("https://api.escuelajs.co/api/v1/products/?title=" + event.detail)
+      .then(response => response.json())
+      .then(data => {
+        searchResults = data;
+      });
+  }
+
 </script>
 
-<Header/>
+<Header on:search={handleSearch}/>
 <div class="container">
   <div class="row">
     <h1 class="text-center">Bienvenue sur votre boutique favorite</h1>
@@ -42,7 +55,16 @@
 </div>
 
   <!-- Afficher les données -->
-  {#if data.length > 0}
+  {#if searchResults.length > 0}
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-center">
+        {#each searchResults as product}
+          <CardShop produit={product}></CardShop>
+        {/each}
+      </div>
+  </div> 
+
+  {:else if data.length > 0}
         <div class="container">
             <div class="d-flex flex-wrap justify-content-center">
               {#each data as product}
