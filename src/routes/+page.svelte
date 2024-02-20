@@ -31,6 +31,7 @@
 
   import CardShop from './card_shop.svelte';
   import Header from './Header.svelte';
+  import CircularProgress from '@smui/circular-progress';
 
   let searchResults = [];
 
@@ -54,27 +55,33 @@
   </div>
 </div>
 
-  <!-- Afficher les données -->
-  {#if searchResults.length > 0}
-    <div class="container">
-      <div class="d-flex flex-wrap justify-content-center">
-        {#each searchResults as product}
-          <CardShop produit={product}></CardShop>
-        {/each}
-      </div>
-  </div> 
+  {#await loadData()}
+    <div class="row justify-content-center">
+        <CircularProgress style="height: 32px; width: 32px;" indeterminate />
+    </div>
+  {:then}
+    <!-- Afficher les données -->
+    {#if searchResults.length > 0}
+      <div class="container">
+        <div class="d-flex flex-wrap justify-content-center">
+          {#each searchResults as product}
+            <CardShop produit={product}></CardShop>
+          {/each}
+        </div>
+    </div> 
 
-  {:else if data.length > 0}
-        <div class="container">
-            <div class="d-flex flex-wrap justify-content-center">
-              {#each data as product}
-                <CardShop produit={product}></CardShop>
-              {/each}
-            </div>
-        </div>     
-  
-  {:else}
-    <p>Aucune donnée disponible</p>
-  {/if}
+    {:else if data.length > 0}
+          <div class="container">
+              <div class="d-flex flex-wrap justify-content-center">
+                {#each data as product}
+                  <CardShop produit={product}></CardShop>
+                {/each}
+              </div>
+          </div>     
+    
+    {:else}
+      <p>Aucune donnée disponible</p>
+    {/if}
+{/await}
   
 
