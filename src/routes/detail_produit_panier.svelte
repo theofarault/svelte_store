@@ -2,8 +2,8 @@
     export let produit_id;
     export let quantite_produit;
 
+    import { createEventDispatcher } from 'svelte';
     import Paper, { Title, Content } from '@smui/paper';
-    import { onMount } from 'svelte';
 
     // Déclarer une variable pour stocker les données récupérées de l'API
     let data = null;
@@ -29,14 +29,24 @@
         }
     }
 
-     // Exécuter la fonction de chargement des données au montage du composant
-    //loadData();
+    const dispatch = createEventDispatcher();
+
+    function calculerSomme(prixUnitaire, quantite) {
+        const somme = prixUnitaire * quantite;
+        console.log(somme)
+        dispatch('nouvelleSomme', somme);
+    }
+
+
 
 </script>
 
 {#await loadData()}
 	<p>Fetching data...</p>
 {:then res}
+    {#await calculerSomme(res.price, quantite_produit)}
+     <p>Fetching data...</p>
+    {:then}
     <Paper color="primary" variant="outlined" class="m-2">
         <div class="container">
             <div class="row">
@@ -56,6 +66,7 @@
         </div>
         
     </Paper>
+    {/await}
 {:catch error}
     <p>Aucun article trouvé</p>
 {/await}
